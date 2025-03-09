@@ -18,6 +18,9 @@ endif
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
+"Q 格式化文本
+"—g 可视模式下复制并搜索其在c文件的出现
+":Diff0rig 打开一个新窗口，加载原始文件内容，并与当前缓冲区进行比较。
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -53,18 +56,23 @@ endif
 
 " 设置行号
 set number
+
+" 启用文件类型检测和插件
+ filetype plugin on
+
+
 " 设置缩进为2个格
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" 设置语法高亮
-syntax on
-
-" 启用文件类型插件
-filetype plugin indent on 
 
 " 设置不区分大小写的搜索
 set ignorecase
-"ddd
 
+
+" plugin {{{1
+
+
+" mapping{{{1
+map <F5> i{<Esc>ea}<Esc>
