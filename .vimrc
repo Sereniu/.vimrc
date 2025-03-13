@@ -53,6 +53,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
+set backspace=2
+set mouse=a
 
 " 设置行号
 set number
@@ -75,4 +77,48 @@ set ignorecase
 
 
 " mapping{{{1
-map <F5> i{<Esc>ea}<Esc>
+let g:mapleader = ';'
+nnoremap \ ;
+
+inoremap jf <esc>
+
+" switch comma-separated arguments
+nnoremap [w  :normal F,h]w2w<cr>
+nnoremap ]w  :let s=&isk \| setl isk+=\",' \| exe "norm diwmmebgPdw'mP" \| let &isk=s<cr>
+
+" paragraph function block
+nnoremap }   }zz
+nnoremap {   {zz
+nnoremap ]]  ]]zz
+nnoremap [[  [[zz
+nnoremap []  []zz
+nnoremap ][  ][zz
+
+nnoremap g;  g;zvzz
+nnoremap g,  g,zvzz
+
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+nnoremap <left>   <c-w>>
+nnoremap <right>  <c-w><
+nnoremap <up>     <c-w>-
+nnoremap <down>   <c-w>+
+
+" quickly open files{{{1
+nnoremap <leader>ev :edit $MYVIMRC<cr>
+
+
+nnoremap <leader>m  :Messages<cr>
+nnoremap <leader>M  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+" nnoremap <leader>o  :!echo `git url`/blob/`git rev-parse --abbrev-ref
+" HEAD`/%\#L<C-R>=line('.')<cr> \| xargs open<cr><cr>
+nnoremap <leader>o  :silent !open <c-r>=fnameescape('<c-r><c-a>')<cr><cr>
+nnoremap <leader>w  :update<cr>
+nnoremap <leader>x  :xit<cr>
+
+" clear the content in command line
+vnoremap <leader>foo :<c-u>command<cr>
