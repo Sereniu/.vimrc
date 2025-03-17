@@ -74,7 +74,33 @@ set ignorecase
 
 
 " plugin {{{1
+call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/vim-plug'
+
+Plug 'mhinz/vim-startify'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'mhinz/vim-janah'
+Plug 'morhetz/gruvbox'
+"Plug 'altercation/solarized'
+
+
+
+
+
+call plug#end()
+
+"autocmd ColorScheme janah highlight Normal ctermbg=235
+"colorscheme solarized
+"runtime! colors/solarized.vim
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='soft'
+
+syntax on
+"set cursorcolumn
+"set cursorline
 
 " mapping{{{1
 let g:mapleader = ';'
